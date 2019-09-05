@@ -194,7 +194,7 @@
                 "[resourceId('Microsoft.Web/serverfarms', variables('appServiceName'))]"
             ],
             "properties": {
-                "name": "[parameters('webAppName')]",
+                "name": "[variables('webAppName')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServiceName'))]"
             }
         },
