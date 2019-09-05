@@ -23,8 +23,6 @@
         "storageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]",
         "iotHubName": "[concat('iotHub', uniqueString(resourceGroup().id))]",
         "streamingJob":"[concat('streamingJob', uniqueString(resourceGroup().id))]",
-        "webAppName":"[concat('webApp', uniqueString(resourceGroup().id))]",
-        "appServiceName":"[concat('appService', uniqueString(resourceGroup().id))]"
         
     },
     "resources": [
