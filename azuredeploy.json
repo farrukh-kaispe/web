@@ -201,7 +201,7 @@
         {
             "type": "Microsoft.Web/sites/extensions",
             "apiVersion": "2018-02-01",
-            "name": "[(variables('webAppName'),'/MsDeploy')]",
+            "name": "[concat(variables('webAppName'),'/MsDeploy')]",
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites',variables('webAppName'))]"
