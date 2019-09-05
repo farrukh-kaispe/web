@@ -30,53 +30,6 @@
     "resources": [
   
         {
-            "type": "Microsoft.Web/serverfarms",
-            "apiVersion": "2015-08-01",
-            "name": "[variables('appServiceName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [],
-            "tags": {
-                "displayName": "appService"
-            },
-            "sku": {
-                "name":"F1"
-            },
-            "properties": {
-                "name": "[variables('appServiceName')]",
-                "numberOfWorkers": 1
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites",
-            "apiVersion": "2015-08-01",
-            "name": "[variables('webAppName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', variables('appServiceName'))]"
-            ],
-            "properties": {
-                "name": "[parameters('webAppName')]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServiceName'))]"
-            }
-        },
-        {
-            "type": "Microsoft.Web/sites/extensions",
-            "apiVersion": "2018-02-01",
-            "name": "[concat(variables('webAppName'),'/MsDeploy')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/sites',variables('webAppName'))]"
-            ],
-            "tags": {},
-            "properties": {
-                "addOnPackages": [
-                    {
-                        "packageUri": "https://kspwebdeployment.blob.core.windows.net/webfile/AzureIOTPortal.zip?sp=r&st=2019-09-04T06:33:23Z&se=2019-09-05T14:33:23Z&spr=https&sv=2018-03-28&sig=Ffygo0ngVCuT8xrT5sZTcmuX%2BcZcHfNXh4dZ1mzH7fQ%3D&sr=b"
-                    }
-                ]
-            }
-        },
-        {
             "name": "[variables('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2018-07-01",
@@ -212,6 +165,54 @@
                       "query": "SELECT\r\n    *\r\nINTO\r\n    [YourOutputAlias]\r\nFROM\r\n    [YourInputAlias]"
                     }
                   }
+            }
+        },
+        
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2015-08-01",
+            "name": "[variables('appServiceName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [],
+            "tags": {
+                "displayName": "appService"
+            },
+            "sku": {
+                "name":"F1"
+            },
+            "properties": {
+                "name": "[variables('appServiceName')]",
+                "numberOfWorkers": 1
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2015-08-01",
+            "name": "[variables('webAppName')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('appServiceName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('webAppName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServiceName'))]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/extensions",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(variables('webAppName'),'/MsDeploy')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites',variables('webAppName'))]"
+            ],
+            "tags": {},
+            "properties": {
+                "addOnPackages": [
+                    {
+                        "packageUri": "https://kspwebdeployment.blob.core.windows.net/webfile/AzureIOTPortal.zip?sp=r&st=2019-09-04T06:33:23Z&se=2019-09-05T14:33:23Z&spr=https&sv=2018-03-28&sig=Ffygo0ngVCuT8xrT5sZTcmuX%2BcZcHfNXh4dZ1mzH7fQ%3D&sr=b"
+                    }
+                ]
             }
         }
         
