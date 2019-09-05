@@ -22,11 +22,6 @@
         
         "storageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]",
         "iotHubName": "[concat('iotHub', uniqueString(resourceGroup().id))]",
-        
-        "iotHubResourceId": "[resourceId('Microsoft.Devices/Iothubs', variables('iotHubName'))]",
-        "iotHubKeyName": "iothubowner",
-        "iotHubKeyResource": "[resourceId('Microsoft.Devices/Iothubs/Iothubkeys', variables('iotHubName'), variables('iotHubKeyName'))]",
-        
         "streamingJob":"[concat('streamingJob', uniqueString(resourceGroup().id))]",
         "webAppName":"[concat('webApp', uniqueString(resourceGroup().id))]",
         "appServiceName":"[concat('appService', uniqueString(resourceGroup().id))]"
